@@ -12,8 +12,8 @@ jobs:
     environment: main
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3 
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
       - name: Login to ECR Public
         run: |
@@ -24,15 +24,16 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-2
-      - name: Build and push image
+          AWS_REGION: us-east-1
+
+      - name: Build and push Docker image to ECR
         run: |
           docker buildx create --use
           docker buildx build --platform linux/amd64 \
             -t public.ecr.aws/${{ secrets.ID_ECR }}/carlos-backend-api:latest \
             ./backend --push
 
-      - name: SSH into EC2 and restart pod
+      - name: SSH into EC2 and apply Kubernetes backend.yaml
         uses: appleboy/ssh-action@v1.0.0
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -40,4 +41,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            sudo kubectl rollout restart deployment backend
+            cd devops-test  # Cambia si tu repo tiene otro nombre
+            git pull origin main
+            sudo kubectl apply -f backend.yaml
