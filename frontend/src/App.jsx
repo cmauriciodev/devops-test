@@ -8,7 +8,7 @@ function App() {
       .then(res => res.json()) 
       .then(data => setMessage(data.message)) 
       .catch(() => setMessage("Error al conectar con backend"));
-  }, []);
+  }, []); 
 
   return ( 
     <div style={{ padding: "2rem", fontSize: "1.5rem" }}>
