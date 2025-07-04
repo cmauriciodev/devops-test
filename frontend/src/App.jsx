@@ -13,6 +13,7 @@ function App() {
   return ( 
     <div style={{ padding: "2rem", fontSize: "1.5rem" }}>
       <p>Hola desde React</p>
+      <p>Change</p>
       <p>Backend dice: {message}</p>
     </div>
   ); 
