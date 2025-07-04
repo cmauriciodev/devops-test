@@ -24,7 +24,7 @@ jobs:
         run: |
           cd frontend
           npm ci
-          echo "VITE_API_URL=http://${{ secrets.EC2_HOST }}/api" > .env
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" > .env
           npm run build 
       - name: Upload to S3  
         run: aws s3 sync frontend/dist/ s3://${{ secrets.S3_NAME }} --delete
