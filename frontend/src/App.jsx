@@ -5,7 +5,7 @@ function App() {
 
   useEffect(() => {  
     fetch(import.meta.env.VITE_API_URL)
-      .then(res => res.json())
+      .then(res => res.json()) 
       .then(data => setMessage(data.message))
       .catch(() => setMessage("Error al conectar con backend"));
   }, []);

@@ -25,15 +25,13 @@ jobs:
           cd frontend
           npm ci
           echo "VITE_API_URL=${{ secrets.EC2_HOST }}" > .env
-          npm run build
-      - name: Echo S3 Bucket Name
-        run: echo "🚀 ${{ secrets.S3_NAME }}"
+          npm run build 
       - name: Upload to S3 
         run: aws s3 sync dist/ s3://${{ secrets.S3_NAME }} --delete
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
+          AWS_REGION: us-east-2
 
       - name: Invalidate CloudFront (optional)
         run: |
@@ -43,4 +41,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-1
+          AWS_REGION: us-east-2
