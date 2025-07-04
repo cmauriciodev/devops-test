@@ -11,8 +11,8 @@ function App() {
   }, []); 
  
   return ( 
-    <div style={{ padding: "2rem", fontSize: "1.5rem" }}>
-      <p>Hola desde React v2</p> 
+    <div style={{ padding: "2rem", fontSize: "1.5rem" }}> 
+      <p>Hola desde React v3</p> 
       <p>Backend dice: {message}</p> 
     </div> 
   ); 
