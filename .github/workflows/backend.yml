@@ -26,6 +26,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: us-east-1
 
+      - name: Echo ECR ID
+        run: echo "🚀 ${{ secrets.ID_ECR }}"
       - name: Build and push image
         run: |
           docker buildx create --use
