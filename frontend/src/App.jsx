@@ -15,7 +15,7 @@ function App() {
       <p>Hola desde React</p>
       <p>Backend dice: {message}</p>
     </div>
-  );
+  ); 
 }
 
 export default App;
