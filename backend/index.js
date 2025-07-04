@@ -6,7 +6,7 @@ const cors = require('cors');
   
 app.use(cors());  
     
-app.get("/api", (req, res) => {     
+app.get("/api", (req, res) => {      
   res.json({ message: "Hola desde Express v2!" });  
 });
   

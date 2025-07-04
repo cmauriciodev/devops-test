@@ -41,6 +41,6 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            cd devops-test  # Cambia si tu repo tiene otro nombre
+            cd devops-test
             git pull origin main
             sudo kubectl apply -f backend.yaml
