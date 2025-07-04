@@ -10,7 +10,7 @@ function App() {
       .catch(() => setMessage("Error al conectar con backend"));
   }, []);
 
-  return (
+  return ( 
     <div style={{ padding: "2rem", fontSize: "1.5rem" }}>
       <p>Hola desde React</p>
       <p>Backend dice: {message}</p>
