@@ -29,7 +29,7 @@ jobs:
         run: |
           docker buildx create --use
           docker buildx build --platform linux/amd64 \
-            -t public.ecr.aws/TU_ID/carlos-backend-api:latest \
+            -t public.ecr.aws/${{ secrets.ID_ECR} }/carlos-backend-api:latest \
             ./backend --push
 
       - name: SSH into EC2 and restart pod
