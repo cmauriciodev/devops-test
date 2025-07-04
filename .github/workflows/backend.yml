@@ -40,4 +40,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            kubectl rollout restart deployment backend
+            sudo kubectl rollout restart deployment backend
